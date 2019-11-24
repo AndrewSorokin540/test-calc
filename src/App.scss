@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap&subset=cyrillic-ext');
+@import './_variables';
+@import './_rouble';
+
+.App{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    margin: 15px 0;
+}
+.App-title{
+    color: $text-color;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.app-body{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 830px;
+    color: $text-color;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    border: 1px solid #A4B2C0;
+    .investment-summ,.investment-period,.investment-adding,.result{
+        display: inline-block;
+    }
+    .investment-summ,.investment-period{
+        width: 60%;
+    }
+    .investment-adding,.result{
+        width: 40%;
+    }
+    @media (max-width: 991px){
+        .investment-summ,.investment-period,.investment-adding,.result{
+            width: 50%;
+        }
+    }
+    @media (max-width: 767px){
+        .investment-summ,.investment-period,.investment-adding,.result{
+            width: 100%;
+        }
+        .investment-summ{
+            order: -2;
+        }
+        .investment-period{
+            order: -1;
+        }
+    }
+}
+
+.size12{
+    font-size: 12px;
+}
+.size14{
+    font-size: 14px;
+}
+.size16{
+    font-size: 16px;
+}
+.size18{
+    font-size: 18px;
+}
+.size22{
+    font-size: 22px;
+}
+
+.w-40{
+    width: 40%;
+}
+.w-60{
+    width: 60%;;
+}

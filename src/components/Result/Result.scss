@@ -1,0 +1,21 @@
+@import '../../variables';
+
+.result{
+    text-align: center;
+    padding: 40px 0 80px;
+}
+.result__profit{
+    font-size: 50px;
+    margin-bottom: 20px;
+    @media(max-width: 767px){
+        font-size: 40px;
+    }
+}
+.result__btn{
+    background-color: $btn-color;
+    color: $btn-color-text;
+    border: none !important;
+    text-transform: uppercase;
+    font-size: 14px;
+    width: 200px;
+}

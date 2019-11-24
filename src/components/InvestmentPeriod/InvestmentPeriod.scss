@@ -1,0 +1,14 @@
+@import '../../variables';
+
+.investment-period{
+    background-color: $bg-color--2;
+}
+
+.investment-period__label{
+    cursor: pointer;
+}
+.investment-period__input:checked + .investment-period__label{
+    background-color: $action-color !important;
+    border-color: $action-color !important;
+    color: #fff;
+}
