@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { Form } from 'reactstrap';
 import './InvestmentPeriod.scss';
 
@@ -20,6 +21,11 @@ function InvestmentPeriod({ addingPercent, updateAddingPercent }) {
             {periods}
         </Form>
     )
+}
+
+InvestmentPeriod.propTypes = {
+    addingPercent: propTypes.arrayOf(propTypes.object),
+    updateAddingPercent: propTypes.func,
 }
 
 export default InvestmentPeriod;

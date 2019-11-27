@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { Row, Col } from 'reactstrap'
 import './InvestmentAdding.scss';
 
@@ -31,6 +32,12 @@ function InvestmentAdding({ investmentSummArr, investmentSumm, addingPercent }) 
             <hr className="mb-0" />
         </div>
     )
+}
+
+InvestmentAdding.propTypes = {
+    investmentSummArr: propTypes.array,
+    investmentSumm: propTypes.number,
+    addingPercent: propTypes.number
 }
 
 export default InvestmentAdding;

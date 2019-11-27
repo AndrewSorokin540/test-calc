@@ -18,11 +18,11 @@ class App extends React.Component {
   }
 
   updateInvestmentSumm = (value) => {
-    this.setState({ investmentSumm: value })
+    this.setState({ investmentSumm: +(value) })
   }
 
   updateAddingPercent = (value) => {
-    this.setState({ addingPercent: value })
+    this.setState({ addingPercent: +(value) })
   }
 
 
@@ -36,8 +36,6 @@ class App extends React.Component {
             <InvestmentSumm
               updateInvestmentSumm={this.updateInvestmentSumm}
               investmentSummArr={data.investmentSummArr}
-              minInvestmentSumm={data.minInvestmentSumm}
-              maxInvestmentSumm={data.maxInvestmentSumm}
 
             />
             <InvestmentAdding
@@ -47,7 +45,7 @@ class App extends React.Component {
             />
             <InvestmentPeriod
               updateAddingPercent={this.updateAddingPercent}
-              addingPercent={data.addingPercent}
+              addingPercent={data.addingPercentArray}
             />
             <Result
               investmentSumm={this.state.investmentSumm}

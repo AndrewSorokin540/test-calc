@@ -1,12 +1,12 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { Form } from 'reactstrap';
 import './InvestmentSumm.scss';
-import Numeral from "numeral";
 
 class InvestmentSumm extends React.Component {
 
-    constructor({ investmentSummArr }) {
-        super({ investmentSummArr });
+    constructor(props) {
+        super(props);
         this.state = {
             currentInvestmentSumm: this.props.investmentSummArr[0],
         };
@@ -18,9 +18,11 @@ class InvestmentSumm extends React.Component {
         if (e.currentTarget.value > this.investmentSummArrLastChild) {
             e.currentTarget.value = this.investmentSummArrLastChild
         }
-        this.setState({ currentInvestmentSumm: (e.currentTarget.value) });
+        this.setState({ currentInvestmentSumm: +(e.currentTarget.value) });
         this.props.updateInvestmentSumm(e.currentTarget.value);
     };
+
+    
 
     render() {
         const investmentSummArr = this.props.investmentSummArr;
@@ -38,7 +40,7 @@ class InvestmentSumm extends React.Component {
                 <div className="d-flex align-items-center justify-content-between mb-5">
                     <span>Сумма для инвестирования</span>
                     <input type="text" className="investment-summ__summ rounded-pill bg-white border border-secondary"
-                        value={Numeral(this.state.currentInvestmentSumm).format('0,0')}
+                        value={this.state.currentInvestmentSumm}
                         onInput={this.handleInputChange}
                     />
                 </div>
@@ -63,6 +65,10 @@ class InvestmentSumm extends React.Component {
             </Form>
         )
     }
+}
+
+InvestmentSumm.propTypes = {
+    investmentSummArr: propTypes.array,
 }
 
 export default InvestmentSumm;

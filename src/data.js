@@ -1,5 +1,5 @@
 const data = {
-    addingPercent: [
+    addingPercentArray: [
         {
             percent: .048,
             period: '3 месяца'

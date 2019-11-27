@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { Button } from 'reactstrap'
 import './Result.scss';
 
@@ -10,6 +11,11 @@ function Result({ investmentSumm, addingPercent }) {
             <Button className="rounded-pill result__btn">Получить</Button>
         </div>
     )
+}
+
+Result.propTypes = {
+    investmentSumm: propTypes.number,
+    addingPercent: propTypes.number
 }
 
 export default Result;
