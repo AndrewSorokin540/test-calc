@@ -7,7 +7,10 @@ function Result({ investmentSumm, addingPercent }) {
     return (
         <div className="result">
             <div className="size22">Стоимость паев</div>
-            <div className="result__profit">{Math.round((+investmentSumm + (+investmentSumm * +addingPercent))).toLocaleString()}<i className="rouble">руб.</i></div>
+            <div className="result__profit">
+                {Math.round((+investmentSumm + (+investmentSumm * +addingPercent))).toLocaleString()}
+                <i className="rouble">руб.</i>
+            </div>
             <Button className="rounded-pill result__btn">Получить</Button>
         </div>
     )

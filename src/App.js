@@ -35,7 +35,7 @@ class App extends React.Component {
           <div className="app-body d-flex flex-wrap">
             <InvestmentSumm
               updateInvestmentSumm={this.updateInvestmentSumm}
-              investmentSummArr={data.investmentSummArr}
+              investSummLevels={data.investmentSummArr}
 
             />
             <InvestmentAdding

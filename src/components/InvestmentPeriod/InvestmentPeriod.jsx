@@ -7,11 +7,21 @@ function InvestmentPeriod({ addingPercent, updateAddingPercent }) {
 
     const periods = addingPercent.map((el, i) => (
         <div className="d-inline" key={i}>
-            <input type="radio" className="investment-period__input" id={`investment-period-${i}`}
-                name="contact" value="email" hidden />
-            <label htmlFor={`investment-period-${i}`} className="investment-period__label border border-secondary rounded-pill px-2 py-1 mr-3 bg-white size12"
+            <input
+                id={`investment-period-${i}`}
+                className="investment-period__input"
+                type="radio"
+                name="contact"
+                value="email"
+                hidden
+            />
+            <label
+                className="investment-period__label border border-secondary rounded-pill px-2 py-1 mr-3 bg-white size12"
+                htmlFor={`investment-period-${i}`}
                 onClick={() => { updateAddingPercent(el.percent) }}
-            >{el.period}</label>
+            >
+                {el.period}
+            </label>
         </div>
     ))
 

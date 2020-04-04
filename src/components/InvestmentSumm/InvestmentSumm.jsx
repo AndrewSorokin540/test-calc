@@ -7,40 +7,39 @@ class InvestmentSumm extends React.Component {
 
     constructor(props) {
         super(props);
+        const { investSummLevels } = props;
         this.state = {
-            currentInvestmentSumm: this.props.investmentSummArr[0],
+            currentInvestmentSumm: investSummLevels[0],
+            maxInvestSumm: investSummLevels[investSummLevels.length - 1],
         };
     }
 
-    investmentSummArrLastChild = this.props.investmentSummArr[this.props.investmentSummArr.length - 1];
-
     handleInputChange = e => {
-        if (e.currentTarget.value > this.investmentSummArrLastChild) {
-            e.currentTarget.value = this.investmentSummArrLastChild
-        }
-        this.setState({ currentInvestmentSumm: +(e.currentTarget.value) });
-        this.props.updateInvestmentSumm(e.currentTarget.value);
+        const currentInvestmentSumm =
+            e.currentTarget.value > this.state.maxInvestSumm
+                ? this.state.maxInvestSumm
+                : +e.currentTarget.value;
+
+        this.setState({ currentInvestmentSumm, });
+        this.props.updateInvestmentSumm(currentInvestmentSumm);
     };
 
-    
+
 
     render() {
-        const investmentSummArr = this.props.investmentSummArr;
-        let currentProgress = (this.state.currentInvestmentSumm / (investmentSummArr[investmentSummArr.length - 1]) * 100 + '%');
+        const { investSummLevels } = this.props;
+        const { currentInvestmentSumm, maxInvestSumm } = this.state;
+        let currentProgress = `${(currentInvestmentSumm / maxInvestSumm * 100)}%`;
+        const investScaleStep = 100 / this.state.maxInvestSumm;
 
-        const investScaleStep = 100 / this.investmentSummArrLastChild;
-        const sliderticks = this.props.investmentSummArr.map((el, i) => (
-            <label key={i} className="rangeLink" style={{ left: `${investScaleStep * el}%` }}>
-                <span className="d-table" >{el / 1000}т.</span>
-                <input hidden type="text" value={`${+el}`} onClick={this.handleInputChange} />
-            </label>
-        ))
         return (
             <Form className="investment-summ p-4">
                 <div className="d-flex align-items-center justify-content-between mb-5">
                     <span>Сумма для инвестирования</span>
-                    <input type="text" className="investment-summ__summ rounded-pill bg-white border border-secondary"
-                        value={this.state.currentInvestmentSumm}
+                    <input
+                        className="investment-summ__summ rounded-pill bg-white border border-secondary"
+                        type="text"
+                        value={maxInvestSumm}
                         onInput={this.handleInputChange}
                     />
                 </div>
@@ -51,13 +50,20 @@ class InvestmentSumm extends React.Component {
                         <input
                             onInput={this.handleInputChange}
                             type="range"
-                            min={investmentSummArr[0]}
-                            max={(investmentSummArr[investmentSummArr.length - 1])}
-                            value={(this.state.currentInvestmentSumm)}
+                            min={investSummLevels[0]}
+                            max={(investSummLevels[investSummLevels.length - 1])}
+                            value={maxInvestSumm}
                             step="1"
                             list="steplist" />
                         <div className="sliderticks">
-                            {sliderticks}
+                            {
+                                investSummLevels.map((level, i) =>
+                                    <label key={i} className="rangeLink" style={{ left: `${investScaleStep * level}%` }}>
+                                        <span className="d-table" >{level / 1000}т.</span>
+                                        <input hidden type="text" value={`${+level}`} onClick={this.handleInputChange} />
+                                    </label>
+                                )
+                            }
                         </div>
                         <span className="range__thumb" style={{ left: currentProgress }}></span>
                     </div>
@@ -68,7 +74,7 @@ class InvestmentSumm extends React.Component {
 }
 
 InvestmentSumm.propTypes = {
-    investmentSummArr: propTypes.array,
+    investSummLevels: propTypes.array,
 }
 
 export default InvestmentSumm;
